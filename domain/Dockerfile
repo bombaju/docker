@@ -29,12 +29,3 @@ EXPOSE 8080
 EXPOSE 8180
 EXPOSE 8230
 ENTRYPOINT /opt/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0
-##Start Wildfly as standalone server
-#EXPOSE 8080
-#EXPOSE 9990
-#ENTRYPOINT /opt/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 
-##Start Wildfly Manager only with separated profile directory
-#RUN cp -rf /opt/wildfly/domain /opt/wildfly/master
-#EXPOSE 9990
-#EXPOSE 9999
-#ENTRYPOINT  /opt/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --host-config=host-master.xml -Djboss.domain.base.dir=/opt/wildfly/master
