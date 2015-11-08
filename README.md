@@ -1,6 +1,6 @@
 # Bombaju's Dockerfiles
 
-All images are created using bombaju/base image which is built with Debian Jessie base + some useful tools
+All images are created using bombaju/base image (https://hub.docker.com/r/bombaju/base/) which is built with Debian Jessie base + some useful tools
 
 Base Dockerfile that includes oracle jre 8
 
