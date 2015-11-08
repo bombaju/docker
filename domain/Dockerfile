@@ -15,10 +15,19 @@ ENV PATH $PATH:/opt/java/bin
 ADD http://download.jboss.org/wildfly/9.0.2.Final/wildfly-9.0.2.Final.tar.gz wfly.tgz 
 RUN tar -xf /opt/wfly.tgz && mv -f /opt/wildfly-9.0.2.Final /opt/wildfly &&  rm -f /opt/wfly.tgz
 ENV JBOSS_HOME /opt/wildfly
-#Add Jboss as Wildfly user
-RUN useradd -ms /bin/bash jboss && chown -R jboss:jboss /opt/wildfly
 
-#Run Wildfly
+#Add Jboss as Wildfly user
+RUN useradd -ms /bin/bash jboss
+
+#Add Logstash support
+COPY jboss-logmanager-ext-module.tgz /opt/jboss-logmanager-ext-module.tgz
+RUN tar -xf /opt/jboss-logmanager-ext-module.tgz -C /opt/wildfly/modules/ && rm /opt/jboss-logmanager-ext-module.tgz
+COPY jboss-logmanager.sh /opt/wildfly/bin/jboss-logmanager.sh
+
+#Take ownership of files
+RUN chown -R jboss:jboss /opt/wildfly
+
+#Set Jboss as Wildfly user
 USER jboss
 #Add Management user for CLI and WebConsole.
 RUN /opt/wildfly/bin/add-user.sh admin Admin123 --silent
