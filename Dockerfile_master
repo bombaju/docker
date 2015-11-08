@@ -22,6 +22,7 @@ RUN useradd -ms /bin/bash jboss && chown -R jboss:jboss /opt/wildfly
 USER jboss
 #Add Management user for CLI and WebConsole.
 RUN /opt/wildfly/bin/add-user.sh admin Admin123 --silent
+
 ##Start Wildfly as standard Domain.
 #ENTRYPOINT /opt/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0 
 #EXPOSE 9990
