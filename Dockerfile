@@ -1,3 +1,5 @@
-# Use latest jboss/base-jdk:7 image as the base
+FROM bombaju/base
+
 MAINTAINER bombaju@bombaju.pl
-FROM bombaju/base:1.0
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
