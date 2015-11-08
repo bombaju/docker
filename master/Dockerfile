@@ -30,7 +30,7 @@ RUN chown -R jboss:jboss /opt/wildfly
 #Set Jboss as Wildfly user
 USER jboss
 #Add Management user for CLI and WebConsole.
-RUN /opt/wildfly/bin/add-user.sh admin Admin123 --silent
+RUN /opt/wildfly/bin/add-user.sh admin Admin123 --silent && /opt/wildfly/bin/add-user.sh link WJmYmqVL2XEU3j5Y  --silent
 
 ##Start Wildfly Manager only with separated profile directory
 RUN cp -rf /opt/wildfly/domain /opt/wildfly/master
