@@ -1,4 +1,4 @@
-# docker
+# Bombaju's Dockerfiles
 
 All images are created using bombaju/base image which is built with Debian Jessie base + some useful tools
 
