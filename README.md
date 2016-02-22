@@ -4,7 +4,7 @@ All images are created using bombaju/base image (https://hub.docker.com/r/bombaj
 
 Base Dockerfile that includes oracle jre 8
 
-Additional Dockerfiles that includes Wildfly Application server in different configurations
+Additional Dockerfiles that includes Wildfly Application Server 10  in different configurations
 
 # Usage
 

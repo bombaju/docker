@@ -12,8 +12,8 @@ RUN mv -f /opt/jre*/ /opt/java
 ENV JAVA_HOME /opt/java
 ENV PATH $PATH:/opt/java/bin
 #Get latest Final Wildfly package
-ADD http://download.jboss.org/wildfly/9.0.2.Final/wildfly-9.0.2.Final.tar.gz wfly.tgz 
-RUN tar -xf /opt/wfly.tgz && mv -f /opt/wildfly-9.0.2.Final /opt/wildfly &&  rm -f /opt/wfly.tgz
+ADD http://download.jboss.org/wildfly/10.0.0.Final/wildfly-10.0.0.Final.tar.gz wfly.tgz 
+RUN tar -xf /opt/wfly.tgz && mv -f /opt/wildfly-10.0.0.Final /opt/wildfly &&  rm -f /opt/wfly.tgz
 ENV JBOSS_HOME /opt/wildfly
 
 #Add Jboss as Wildfly user
@@ -39,5 +39,5 @@ RUN /opt/wildfly/bin/add-user.sh admin Admin123 --silent
 RUN cp -rf /opt/wildfly/domain /opt/wildfly/node
 EXPOSE 9990
 EXPOSE 9999
-ENV DOMAINMANAGER 192.168.0.4
+ENV DOMAINMANAGER 127.0.0.1
 ENTRYPOINT  /opt/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --host-config=host-slave.xml -Djboss.domain.base.dir=/opt/wildfly/node -Djboss.domain.master.address=$DOMAINMANAGER
